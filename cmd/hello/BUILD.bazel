@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "go_default_library",
+    srcs = ["hello.go"],
+    importpath = "github.com/parthpatel1001/bazel_go_skaffold/cmd/hello",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "hello",
+    embed = [":go_default_library"],
+    visibility = ["//visibility:public"],
+)
